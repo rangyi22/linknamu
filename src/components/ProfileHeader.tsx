@@ -7,7 +7,7 @@ export default function ProfileHeader({
 }: Pick<Profile, "name" | "bio" | "avatarUrl">) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
-      <div className="h-32 w-32 overflow-hidden rounded-full ring-4 ring-white/70 shadow-[0_10px_30px_-8px_rgba(180,110,60,0.45)] dark:ring-white/10 dark:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)]">
+      <div className="h-32 w-32 overflow-hidden rounded-full ring-4 ring-white/70 shadow-[0_10px_30px_-8px_rgba(200,150,110,0.28)] dark:ring-white/10 dark:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)]">
         {avatarUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

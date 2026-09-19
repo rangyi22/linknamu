@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --background: linear-gradient(160deg, #fdf6ec 0%, #fdecd8 45%, #fbdfc4 100%);
+  --background: linear-gradient(160deg, #fdfaf5 0%, #fbf1e6 45%, #f7e6d5 100%);
   --foreground: #4a3a2c;
 }
 

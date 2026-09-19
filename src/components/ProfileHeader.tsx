@@ -6,8 +6,8 @@ export default function ProfileHeader({
   avatarUrl,
 }: Pick<Profile, "name" | "bio" | "avatarUrl">) {
   return (
-    <div className="flex flex-col items-center gap-2 text-center">
-      <div className="h-36 w-36 overflow-hidden rounded-full ring-2 ring-neutral-200 dark:ring-neutral-700">
+    <div className="flex flex-col items-center gap-4 text-center">
+      <div className="h-32 w-32 overflow-hidden rounded-full ring-4 ring-white/70 shadow-[0_10px_30px_-8px_rgba(180,110,60,0.45)] dark:ring-white/10 dark:shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)]">
         {avatarUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -16,15 +16,19 @@ export default function ProfileHeader({
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-neutral-800 text-4xl font-semibold text-white dark:bg-neutral-200 dark:text-neutral-900">
+          <div className="flex h-full w-full items-center justify-center bg-stone-800 text-4xl font-semibold text-white dark:bg-stone-200 dark:text-stone-900">
             {name.charAt(0)}
           </div>
         )}
       </div>
-      <h1 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">
-        {name}
-      </h1>
-      <p className="text-sm text-neutral-500 dark:text-neutral-400">{bio}</p>
+      <div className="flex flex-col gap-1.5">
+        <h1 className="text-2xl font-bold tracking-tight text-stone-800 dark:text-stone-100">
+          {name}
+        </h1>
+        <p className="text-balance text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+          {bio}
+        </p>
+      </div>
     </div>
   );
 }

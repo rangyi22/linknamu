@@ -31,13 +31,21 @@ export default function LinkList({ links }: { links: LinkItem[] }) {
     setCounts((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
 
     fetch(`/api/links/${id}/click`, { method: "POST", keepalive: true })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (typeof data?.count === "number") {
-          setCounts((prev) => ({ ...prev, [id]: data.count }));
+      .then(async (res) => {
+        const data = res.ok ? await res.json() : null;
+        if (typeof data?.count !== "number") {
+          throw new Error("클릭 수 기록에 실패했습니다.");
         }
+        // 서버가 확정한 값으로 맞춥니다.
+        setCounts((prev) => ({ ...prev, [id]: data.count }));
       })
-      .catch(() => {});
+      .catch(() => {
+        // 저장되지 않았는데 올라간 숫자를 남겨 두면 기록된 것처럼 보입니다. 되돌립니다.
+        setCounts((prev) => ({
+          ...prev,
+          [id]: Math.max(0, (prev[id] ?? 1) - 1),
+        }));
+      });
   }, []);
 
   return (

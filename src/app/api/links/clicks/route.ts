@@ -17,7 +17,7 @@ export async function GET() {
     return NextResponse.json({ ok: true, counts });
   } catch (error) {
     console.error("링크 클릭 수 조회 실패:", error);
-    // 집계는 부가 기능이므로 실패해도 페이지는 정상 동작해야 합니다.
-    return NextResponse.json({ ok: false, counts: {} }, { status: 200 });
+    // 200으로 감추면 "그냥 0회"로 보여 원인을 찾기 어렵습니다. 실패는 실패로 알립니다.
+    return NextResponse.json({ ok: false, counts: {} }, { status: 500 });
   }
 }

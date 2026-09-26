@@ -15,6 +15,6 @@ export async function POST(
     return NextResponse.json({ ok: true, count: doc?.count ?? 0 });
   } catch (error) {
     console.error("링크 클릭 수 집계 실패:", error);
-    return NextResponse.json({ ok: false }, { status: 200 });
+    return NextResponse.json({ ok: false }, { status: 500 });
   }
 }

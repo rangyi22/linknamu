@@ -26,3 +26,15 @@ export function getMongoClientPromise(): Promise<MongoClient> {
   }
   return clientPromise;
 }
+
+export type LinkClickDoc = {
+  _id: string;
+  count: number;
+  updatedAt: Date;
+};
+
+// 링크별 클릭 수를 담는 컬렉션. DB 이름은 MONGODB_URI 경로에 적힌 값을 그대로 따릅니다.
+export async function getLinkClicksCollection() {
+  const client = await getMongoClientPromise();
+  return client.db().collection<LinkClickDoc>("linkClicks");
+}

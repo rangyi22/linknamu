@@ -1,5 +1,5 @@
 import DarkModeToggle from "@/components/DarkModeToggle";
-import LinkCard from "@/components/LinkCard";
+import LinkList from "@/components/LinkList";
 import ProfileHeader from "@/components/ProfileHeader";
 import { profile } from "@/data/profile";
 
@@ -16,11 +16,7 @@ export default function Home() {
             bio={profile.bio}
             avatarUrl={profile.avatarUrl}
           />
-          <div className="flex w-full flex-col gap-4">
-            {profile.links.map((link) => (
-              <LinkCard key={link.id} {...link} />
-            ))}
-          </div>
+          <LinkList links={profile.links} />
         </div>
       </div>
     </main>
